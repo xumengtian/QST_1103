@@ -22,16 +22,51 @@ public class DifferentFormat {
 		SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", locale); //修改格式
 		while (scanner.hasNext()){
 			String line = scanner.nextLine();
+			//对输入的数据进行分割，并将其拼接成"yyyy-MM-dd HH:mm:ss"格式
+			String str[] = line.split("/");
+			String str2[] = str[2].split(":");
+			String time = str2[0]+"-"+month1(str[1])+"-"+str[0]+" "+str2[1]+":"+str2[2]
+					+":"+str2[3];//将其拼接成所需要的格式
 			Date lineDate = null;
 			long lineTimestamp;
 			try {
-				lineDate = inputFormat.parse(line);
+				lineDate = inputFormat.parse(time);
 				lineTimestamp = lineDate.getTime();
 				System.out.println(lineTimestamp);
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}			
 		}
+	}
+//构造一个month1方法来将英文的月份转换成数字的形式
+	private static String month1(String string) {
+		String ss = null;
+		if (string.equals("Jan")) {
+			ss = "01";
+		} else if (string.equals("Feb")) {
+			ss = "02";
+		} else if (string.equals("Mar")) {
+			ss = "03";
+		} else if (string.equals("Apr")) {
+			ss = "04";
+		} else if (string.equals("May")) {
+			ss = "05";
+		} else if (string.equals("Jun")) {
+			ss = "06";
+		} else if (string.equals("Jul")) {
+			ss = "07";
+		} else if (string.equals("Aug")) {
+			ss = "08";
+		} else if (string.equals("Sep")) {
+			ss = "09";
+		} else if (string.equals("Oct")) {
+			ss = "10";
+		} else if (string.equals("Nov")) {
+			ss = "11";
+		} else if (string.equals("Dec")) {
+			ss = "12";
+		}
+		return ss;
 	}
 }
