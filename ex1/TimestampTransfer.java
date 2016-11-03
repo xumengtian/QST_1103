@@ -16,17 +16,17 @@ import java.util.Scanner;
 public class TimestampTransfer {
 	@SuppressWarnings("resource")
 	public static void main(String[] args){
-		Scanner scanner = new Scanner(System.in);
-		SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		while (scanner.hasNext()){
+		Scanner scanner = new Scanner(System.in);//键盘输入数据
+		SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//输入格式
+		SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");//输出格式
+		while (scanner.hasNext()){//hasNext逐行输入数据
 			String line = scanner.nextLine();
-			Date lineDate = null;
-			long lineTimestamp;
-			try {
-				lineDate = inputFormat.parse(line);
-				lineTimestamp = lineDate.getTime();
-				System.out.println(outputFormat.format(lineDate) + " to " + lineTimestamp);
+			Date lineDate = null;//定义一个Data类型的变量并初始化
+			long lineTimestamp;//定义一个长整型的变量lineTimestamp
+			try {//抛出异常
+				lineDate = inputFormat.parse(line);//调用inputFormat的parse方法。parse 方法返回一个整数值,这个整数表示 dateVal 中所包含的日期与1970年1月1日午夜之间相间隔的毫秒数
+				lineTimestamp = lineDate.getTime();//获取时间
+				System.out.println(outputFormat.format(lineDate) + " to " + lineTimestamp);//按其格式输出，lineTimestamp表示键盘输入时间和1970年1月1日之间相差毫秒数
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
